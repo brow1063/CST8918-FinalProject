@@ -8,7 +8,7 @@ variable "resource_group_name" {
   description = "Resource group name"
 }
 
-variable "region" {
+variable "location" {
   type        = string
   description = "Azure region"
 }
@@ -17,12 +17,6 @@ variable "node_count" {
   type        = number
   default     = 1
   description = "Static node count (if not autoscaling)"
-}
-
-variable "enable_auto_scaling" {
-  type        = bool
-  default     = false
-  description = "Enable autoscaling?"
 }
 
 variable "min_count" {
@@ -35,4 +29,19 @@ variable "max_count" {
   type        = number
   default     = 3
   description = "Max nodes (if autoscaling)"
+}
+
+variable "enable_auto_scaling" {
+  type    = bool
+  default = false
+}
+
+variable "vm_size" {
+  type    = string
+  default = "Standard_B2s"
+}
+
+variable "kubernetes_version" {
+  type    = string
+  default = "1.32"
 }
