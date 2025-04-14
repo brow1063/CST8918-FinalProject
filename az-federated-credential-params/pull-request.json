@@ -1,0 +1,7 @@
+{
+    "name": "pull-request",
+    "issuer": "https://token.actions.githubusercontent.com",
+    "subject": "repo:brow1063/CST8918-FinalProject:pull_request",
+    "description": "CST8918 FinalProject - GitHub Actions",
+    "audiences": ["api://AzureADTokenExchange"]
+}
