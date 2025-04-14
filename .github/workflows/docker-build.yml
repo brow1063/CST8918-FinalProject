@@ -1,0 +1,46 @@
+name: Build and Push to ACR
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      # -'' <-- this should be the path to the weather app im im understanding it correctly     
+      - 'Dockerfile' # Only trigger when Dockerfile changes
+      - 'package.json' 
+
+permissions:
+  id-token: write    
+  contents: read
+  pull-requests: write
+
+env:
+  # ACR_NAME: whatever the variable name is for ACR in the repo variables
+  IMAGE_NAME: weather-app
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    environment: test
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    - name: Login to ACR
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ env.ACR_NAME }}.azurecr.io
+        username: ${{ secrets.AZURE_CLIENT_ID }}
+        password: ${{ secrets.AZURE_CLIENT_SECRET }} 
+
+    - name: Build and Push Docker Image
+      run: |
+        docker build -t ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }} .
+        docker push ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
