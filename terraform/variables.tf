@@ -1,3 +1,3 @@
 variable "region" {
-  default     = "canadacentral"
+  default = "canadacentral"
 }
