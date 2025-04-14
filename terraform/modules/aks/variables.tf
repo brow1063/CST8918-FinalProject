@@ -30,3 +30,18 @@ variable "max_count" {
   default     = 3
   description = "Max nodes (if autoscaling)"
 }
+
+variable "enable_auto_scaling" {
+  type    = bool
+  default = false
+}
+
+variable "vm_size" {
+  type    = string
+  default = "Standard_B2s"
+}
+
+variable "kubernetes_version" {
+  type    = string
+  default = "1.32"
+}
