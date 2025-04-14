@@ -1,6 +1,6 @@
 plugin "terraform" {
   enabled = true
-  preset  = "all"
+  preset  = "recommended"
 }
 
 plugin "azurerm" {
