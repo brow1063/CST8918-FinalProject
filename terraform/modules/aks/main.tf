@@ -19,11 +19,11 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   kubernetes_version  = "1.32"
 
   default_node_pool {
-    name                = "default"
-    vm_size             = "Standard_B2s"
-    node_count          = var.node_count
-    min_count           = var.min_count
-    max_count           = var.max_count
+    name       = "default"
+    vm_size    = "Standard_B2s"
+    node_count = var.node_count
+    min_count  = var.min_count
+    max_count  = var.max_count
   }
 
   identity {

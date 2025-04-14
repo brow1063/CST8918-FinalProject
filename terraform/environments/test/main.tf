@@ -1,7 +1,7 @@
 module "network" {
-  source          = "../../modules/network"
-  location        = "canadacentral"
-  environment     = "prod"
+  source      = "../../modules/network"
+  location    = "canadacentral"
+  environment = "prod"
 }
 
 
