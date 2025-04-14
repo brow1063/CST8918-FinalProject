@@ -1,6 +1,20 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.0"
+    }
+  }
+}
+
+provider "azurerm" {
+  features {}
+}
+
+
 resource "azurerm_resource_group" "main" {
   name     = "cst8918-final-project-group-12"
-  location = var.region
+  location = var.location
 }
 
 resource "azurerm_virtual_network" "main" {
