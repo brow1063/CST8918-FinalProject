@@ -36,3 +36,15 @@ variable "max_count" {
   default     = 3
   description = "Max nodes (if autoscaling)"
 }
+
+variable "vm_size" {
+  type        = string
+  default     = "Standard_B2s"
+  description = "VM size for the node pool"
+}
+
+variable "kubernetes_version" {
+  type        = string
+  default     = "1.32"
+  description = "AKS control‑plane version"
+}
