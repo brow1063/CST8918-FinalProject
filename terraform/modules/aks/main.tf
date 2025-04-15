@@ -9,7 +9,7 @@ terraform {
 
 provider "azurerm" {
   features {}
-  use_oidc             = true
+  use_oidc = true
 }
 
 resource "azurerm_kubernetes_cluster" "cluster" {
@@ -20,11 +20,11 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   kubernetes_version  = "1.29"
 
   default_node_pool {
-    name       = "default"
-    vm_size    = "Standard_B2s"
+    name                = "default"
+    vm_size             = "Standard_B2s"
     enable_auto_scaling = true
-    min_count  = var.min_count
-    max_count  = var.max_count
+    min_count           = var.min_count
+    max_count           = var.max_count
   }
 
   identity {
