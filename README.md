@@ -50,9 +50,9 @@ terraform init
 ```bash
 terraform plan
 terraform apply
-
 ```
 
 ## Problems encountered
 1. API versioning on the AKS cluster - During deployment, an error occurred due to the use of an unsupported API version (2023-06-02-preview) for the managedClusters resource type in the eastus region. The error message indicated that this version was not registered for that location, preventing successful provisioning of the AKS cluster.
-
+   
+https://cdn.discordapp.com/attachments/1359694405656776907/1361551554548596846/image.png?ex=67ff2b33&is=67fdd9b3&hm=f6b57a144a5bbfc8614232aa542dd77c231f08a5b48b1b9bd2703406823ec809&
