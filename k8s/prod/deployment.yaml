@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: remix-weather
+  namespace: prod
+  labels:
+    app: remix-weather
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: remix-weather
+  template:
+    metadata:
+      labels:
+        app: remix-weather
+    spec:
+      containers:
+        - name: remix-weather
+          image: remixweatheracr.azurecr.io/remix-weather:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"

@@ -4,12 +4,12 @@ on:
   pull_request:
     branches: [ main ]
     paths:
-      - 'apps/remix-weather/**'
+      - 'remix-weather/**'
       - '.github/workflows/deploy.yml'
   push:
     branches: [ main ]
     paths:
-      - 'apps/remix-weather/**'
+      - 'remix-weather/**'
       - '.github/workflows/deploy.yml'
 
 permissions:
@@ -39,7 +39,7 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           IMAGE_TAG=${{ github.sha }}
-          docker build -t $REGISTRY.azurecr.io/remix-weather:$IMAGE_TAG apps/remix-weather
+          docker build -t $REGISTRY.azurecr.io/remix-weather:$IMAGE_TAG /remix-weather
           docker push $REGISTRY.azurecr.io/remix-weather:$IMAGE_TAG
         env:
           DOCKER_BUILDKIT: 1
