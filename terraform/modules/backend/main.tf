@@ -2,13 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.0"
+      version = "~> 3.96.0"
     }
   }
 }
 
 provider "azurerm" {
   features {}
+  use_oidc = true
 }
 
 resource "azurerm_resource_group" "tfstate" {
@@ -17,7 +18,7 @@ resource "azurerm_resource_group" "tfstate" {
 }
 
 resource "azurerm_storage_account" "tfstate" {
-  name                     = "tfstatestorage"
+  name                     = "tfstatestoragecsttt"
   resource_group_name      = azurerm_resource_group.tfstate.name
   location                 = azurerm_resource_group.tfstate.location
   account_tier             = "Standard"

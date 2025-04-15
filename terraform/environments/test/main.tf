@@ -1,10 +1,6 @@
-provider "azurerm" {
-  features {}
-}
-
 module "network" {
   source      = "../../modules/network"
-  location    = "canadacentral"
+  location    = "eastus"
   environment = "prod"
 }
 
@@ -15,4 +11,11 @@ module "aks" {
   location            = module.network.location
   resource_group_name = module.network.resource_group_name
   node_count          = 1
+}
+
+module "redis_test" {
+  source              = "../../modules/redis"
+  environment         = "test"
+  location            = var.region
+  resource_group_name = module.network.resource_group_name
 }
