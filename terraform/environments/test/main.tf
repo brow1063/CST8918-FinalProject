@@ -12,3 +12,10 @@ module "aks" {
   resource_group_name = module.network.resource_group_name
   node_count          = 1
 }
+
+module "redis_test" {
+  source              = "../../modules/redis"
+  environment         = "test"
+  location            = var.region
+  resource_group_name = module.network.resource_group_name
+}

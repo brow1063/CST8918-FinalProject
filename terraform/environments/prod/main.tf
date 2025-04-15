@@ -15,3 +15,10 @@ module "aks" {
   min_count  = 1
   max_count  = 3
 }
+
+module "redis_prod" {
+  source              = "../../modules/redis"
+  environment         = "prod"
+  location            = var.region
+  resource_group_name = module.network.resource_group_name
+}
