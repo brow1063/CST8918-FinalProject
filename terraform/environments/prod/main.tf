@@ -1,6 +1,6 @@
 module "network" {
   source      = "../../modules/network"
-  location    = "canadacentral"
+  location    = "eastus"
   environment = "prod"
 }
 
