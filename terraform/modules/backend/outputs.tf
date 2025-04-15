@@ -9,3 +9,8 @@ output "container_name" {
 output "resource_group_name" {
   value = azurerm_resource_group.tfstate.name
 }
+
+output "arm_access_key" {
+  value     = azurerm_storage_account.tfstate.primary_access_key
+  sensitive = true
+}
