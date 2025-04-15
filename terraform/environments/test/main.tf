@@ -1,8 +1,3 @@
-provider "azurerm" {
-  features {}
-  use_oidc = true
-}
-
 module "network" {
   source      = "../../modules/network"
   location    = "canadacentral"
