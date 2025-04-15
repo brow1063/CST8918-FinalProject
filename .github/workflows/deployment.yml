@@ -26,21 +26,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Log in to Azure Container Registry
+      - name: Log in to Azure
         uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Azure CLI - ACR login
-        run: az acr login --name $REGISTRY
+      - name: Log in to Azure Container Registry
+        run: az acr login --name ${{ env.REGISTRY }}
 
       - name: Build and Push Docker Image
         run: |
           IMAGE_TAG=${{ github.sha }}
-          docker build -t $REGISTRY.azurecr.io/remix-weather:$IMAGE_TAG /remix-weather
-          docker push $REGISTRY.azurecr.io/remix-weather:$IMAGE_TAG
+          docker build -t ${{ env.REGISTRY }}.azurecr.io/remix-weather:$IMAGE_TAG remix-weather
+          docker push ${{ env.REGISTRY }}.azurecr.io/remix-weather:$IMAGE_TAG
         env:
           DOCKER_BUILDKIT: 1
 
