@@ -56,3 +56,7 @@ terraform apply
 ## Problems encountered
 1. API versioning on the AKS cluster - During deployment, an error occurred due to the use of an unsupported API version (2023-06-02-preview) for the managedClusters resource type in the eastus region. The error message indicated that this version was not registered for that location, preventing successful provisioning of the AKS cluster.
 
+## Screenshot
+![git-checks](https://github.com/user-attachments/assets/a66919f0-b9d8-44dd-b65d-d95c6e16cf8e)
+
+
